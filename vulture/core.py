@@ -119,13 +119,13 @@ class Item:
     """
 
     __slots__ = (
-        "name",
-        "typ",
+        "confidence",
         "filename",
         "first_lineno",
         "last_lineno",
         "message",
-        "confidence",
+        "name",
+        "typ",
     )
 
     def __init__(
@@ -285,7 +285,7 @@ class Vulture(ast.NodeVisitor):
             self._log("Scanning:", module)
             try:
                 module_string = utils.read_file(module)
-            except utils.VultureInputException as err:  # noqa: F841
+            except utils.VultureInputException as err:
                 self._log(
                     f"Error: Could not read file {module} - {err}\n"
                     f"Try to change the encoding to UTF-8.",
@@ -322,10 +322,10 @@ class Vulture(ast.NodeVisitor):
             raise ValueError("min_confidence must be between 0 and 100.")
 
         def by_name(item):
-            return (str(item.filename).lower(), item.first_lineno)
+            return str(item.filename).lower(), item.first_lineno
 
         def by_size(item):
-            return (item.size,) + by_name(item)
+            return item.size, *by_name(item)
 
         unused_code = (
             self.unused_attrs
@@ -531,7 +531,7 @@ class Vulture(ast.NodeVisitor):
         for field_name in names:
             # Remove brackets and their contents: "a[0][b].c[d].e" -> "a.c.e",
             # then split the resulting string: "a.b.c" -> ["a", "b", "c"]
-            vars = re.sub(r"\[\w*\]", "", field_name).split(".")
+            vars = re.sub(r"\[\w*]", "", field_name).split(".")
             for var in vars:
                 if is_identifier(var):
                     self.used_names.add(var)

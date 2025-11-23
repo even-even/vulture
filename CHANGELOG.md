@@ -4,6 +4,7 @@
 * Handle `while True` loops without `break` statements (kreathon).
 * Add whitelist for `ssl.SSLContext` (tunnelsociety, #392).
 * Add support for Python 3.14 (even-even).
+* Add more ruff rules (even-even).
 
 # 2.14 (2024-12-08)
 

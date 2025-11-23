@@ -129,10 +129,10 @@ class Reachability:
         if not statement_can_fall_through:
             self._mark_as_no_fall_through(node)
 
-    def _can_else_fall_through(self, orelse, condition_always_true):
-        if not orelse:
+    def _can_else_fall_through(self, or_else, condition_always_true):
+        if not or_else:
             return not condition_always_true
-        return self._can_fall_through_statements_analysis(orelse)
+        return self._can_fall_through_statements_analysis(or_else)
 
     def _handle_reachability_if_expr(self, node):
         if utils.condition_is_always_false(node.test):

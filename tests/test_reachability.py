@@ -735,7 +735,7 @@ def test_while_true_no_fall_through(v):
     v.scan(
         """\
 while True:
-    raise Exception() 
+    raise Exception()
 print(":-(")
 """
     )
@@ -747,7 +747,7 @@ def test_while_true_no_fall_through_nested(v):
         """\
 while True:
     if a > 3:
-        raise Exception() 
+        raise Exception()
     else:
         pass
 print(":-(")
@@ -774,7 +774,7 @@ def test_while_true_fall_through(v):
     v.scan(
         """\
 while True:
-    break 
+    break
 print(":-)")
 """
     )
@@ -786,7 +786,7 @@ def test_while_true_fall_through_nested(v):
         """\
 while True:
     if a > 3:
-        raise Exception() 
+        raise Exception()
     else:
         break
 print(":-(")

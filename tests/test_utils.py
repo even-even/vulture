@@ -44,8 +44,10 @@ def check_decorator_names(code, expected_names):
     decorator_names = []
 
     def visit_FunctionDef(node):
-        for decorator in node.decorator_list:
-            decorator_names.append(utils.get_decorator_name(decorator))
+        decorator_names.extend(
+            utils.get_decorator_name(decorator)
+            for decorator in node.decorator_list
+        )
 
     node_visitor = ast.NodeVisitor()
     node_visitor.visit_AsyncFunctionDef = visit_FunctionDef
