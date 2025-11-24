@@ -40,14 +40,11 @@ def _check_input_config(data):
     for key, value in data.items():
         if key not in DEFAULTS:
             raise InputError(f"Unknown configuration key: {key}")
-        if (
-            (isinstance(value, bool) or isinstance(DEFAULTS[key], bool))
-            and type(value) is not type(DEFAULTS[key])
-        ) or not isinstance(value, type(DEFAULTS[key])):
+        # The linter suggests to use "isinstance" here but this fails to
+        # detect the difference between `int` and `bool`.
+        if type(value) is not type(DEFAULTS[key]):
             expected_type = type(DEFAULTS[key]).__name__
-            raise InputError(
-                f"Data type for '{key}' must be '{expected_type}'"
-            )
+            raise InputError(f"Data type for {key} must be {expected_type!r}")
 
 
 def _check_output_config(config):

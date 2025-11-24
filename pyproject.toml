@@ -89,7 +89,7 @@ select = [
     "SIM",  # flake8-simplify
     "UP",   # pyupgrade
     "RUF",  # ruff-specific rules
-    "PERF"  # perflint
+    "PERF", # perflint
 ]
 ignore = [
     "C408",   # unnecessary dict call
