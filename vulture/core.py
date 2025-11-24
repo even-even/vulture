@@ -531,7 +531,7 @@ class Vulture(ast.NodeVisitor):
         for field_name in names:
             # Remove brackets and their contents: "a[0][b].c[d].e" -> "a.c.e",
             # then split the resulting string: "a.b.c" -> ["a", "b", "c"]
-            vars = re.sub(r"\[\w*]", "", field_name).split(".")
+            vars = re.sub(r"\[\w*\]", "", field_name).split(".")
             for var in vars:
                 if is_identifier(var):
                     self.used_names.add(var)

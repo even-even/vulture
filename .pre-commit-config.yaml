@@ -7,4 +7,4 @@ repos:
       - id: ruff-format
       # Run the linter.
       - id: ruff-check
-        #args: [ '--fix' ]
+        args: [ '--fix' ]
