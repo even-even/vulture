@@ -47,11 +47,11 @@ between 60% and 100%, where a value of 100% signals that it is certain that the
 code won't be executed. Values below 100% are *very rough* estimates (based on
 the type of code chunk) for how likely it is that the code is unused.
 
-| Code type | Confidence value |
-| ------------------- | -- |
-| function/method/class argument, unreachable code | 100% |
-| import | 90% |
-| attribute, class, function, method, property, variable | 60% |
+| Code type                                              | Confidence value |
+|--------------------------------------------------------|------------------|
+| function/method/class argument, unreachable code       | 100%             |
+| import                                                 | 90%              |
+| attribute, class, function, method, property, variable | 60%              |
 
 You can use the `--min-confidence` flag to set the minimum confidence
 for code to be reported as unused. Use `--min-confidence 100` to only
@@ -211,7 +211,7 @@ in your repository and specify all files that Vulture should check under
 
 There's also a [GitHub Action for Vulture](https://github.com/gtkacz/vulture-action),
 a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=sebastienfi.dead-code-finder)
-and you can use Vulture programatically. For example:
+and you can use Vulture programmatically. For example:
 
 ``` python
 import vulture
@@ -331,12 +331,12 @@ codes.
 
 ## Exit codes
 
-| Exit code |                          Description                          |
-| --------- | ------------------------------------------------------------- |
-|     0     | No dead code found                                            |
-|     1     | Invalid input (file missing, syntax error, wrong encoding)    |
-|     2     | Invalid command line arguments                                |
-|     3     | Dead code found                                               |
+| Exit code | Description                                                |
+|-----------|------------------------------------------------------------|
+| 0         | No dead code found                                         |
+| 1         | Invalid input (file missing, syntax error, wrong encoding) |
+| 2         | Invalid command line arguments                             |
+| 3         | Dead code found                                            |
 
 ## Similar programs
 
